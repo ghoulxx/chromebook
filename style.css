@@ -1,0 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0d1117;
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
+.container {
+    background: #161b22;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    width: 350px;
+    margin: auto;
+}
+.profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+.social-links .btn {
+    display: block;
+    background: #21262d;
+    color: white;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.discord { background: #5865F2; }
+.twitter { background: #1DA1F2; }
+.instagram { background: #E1306C; }
+.youtube { background: #FF0000; }
