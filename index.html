@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chromebook Bio Page</title>
+    <title>Made on a Chromebook</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        let titleText = ["M", "Ma", "Mad", "Made", "Made o", "Made on", "Made on a", "Made on a C", "Made on a Ch", "Made on a Chr", "Made on a Chrom", "Made on a Chromebook", "Made on a Chromebook ", "Made on a Chromebook"];
+        let index = 0;
+        function animateTitle() {
+            document.title = titleText[index++ % titleText.length];
+            setTimeout(animateTitle, 300);
+        }
+        animateTitle();
+    </script>
 </head>
 <body>
     <div class="container">
         <div class="profile">
             <img src="images/profile.jpg" alt="Profile Picture">
-            <h1>swag</h1>
+            <h1>John Doe</h1>
             <p>Web Developer | Tech Enthusiast | Blogger</p>
         </div>
         <div class="social-links">
@@ -22,3 +31,40 @@
     </div>
 </body>
 </html>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #0d1117;
+        color: white;
+        text-align: center;
+        padding: 50px;
+    }
+    .container {
+        background: #161b22;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        width: 350px;
+        margin: auto;
+    }
+    .profile img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+    }
+    .social-links .btn {
+        display: block;
+        background: #21262d;
+        color: white;
+        padding: 12px;
+        margin: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .discord { background: #5865F2; }
+    .twitter { background: #1DA1F2; }
+    .instagram { background: #E1306C; }
+    .youtube { background: #FF0000; }
+</style>
