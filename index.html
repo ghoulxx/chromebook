@@ -14,21 +14,46 @@
         }
         animateTitle();
     </script>
+    <style>
+        .enter-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0d1117;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <div id="enterPage" class="enter-page" onclick="enterSite()">
+        Click to Enter
+    </div>
+    <div id="mainContent" class="container hidden">
         <div class="profile">
             <img src="images/profile.jpg" alt="Profile Picture">
-            <h1>$wag</h1>
+            <h1>John Doe</h1>
             <p>Web Developer | Tech Enthusiast | Blogger</p>
         </div>
         <div class="social-links">
-            <a href="#" class="btn discord">Discord</a>
-            <a href="#" class="btn twitter">Twitter</a>
-            <a href="#" class="btn instagram">Instagram</a>
-            <a href="#" class="btn youtube">YouTube</a>
+            <a href="https://discord.com" target="_blank" class="btn discord">Discord</a>
+            <a href="https://twitter.com" target="_blank" class="btn twitter">Twitter</a>
+            <a href="https://instagram.com" target="_blank" class="btn instagram">Instagram</a>
+            <a href="https://youtube.com" target="_blank" class="btn youtube">YouTube</a>
         </div>
     </div>
+
+    <script>
+        function enterSite() {
+            document.getElementById("enterPage").classList.add("hidden");
+            document.getElementById("mainContent").classList.remove("hidden");
+        }
+    </script>
 </body>
 </html>
 
