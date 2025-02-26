@@ -15,6 +15,21 @@
         animateTitle();
     </script>
     <style>
+        @keyframes blackSnowfall {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(20px); }
+        }
+        .falling-text {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+        .falling-text span {
+            position: relative;
+            display: inline-block;
+            animation: blackSnowfall 1.5s infinite ease-in-out;
+            color: black;
+        }
         .enter-page {
             display: flex;
             justify-content: center;
@@ -28,17 +43,54 @@
         .hidden {
             display: none;
         }
+        .music-player {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #21262d;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        .music-player iframe {
+            border-radius: 10px;
+            width: 300px;
+            height: 150px;
+        }
+        .music-controls button {
+            background: #5865F2;
+            color: white;
+            padding: 8px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .music-title {
+            color: white;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div id="enterPage" class="enter-page" onclick="enterSite()">
-        Click to Enter
+        Castle Falling
     </div>
     <div id="mainContent" class="container hidden">
         <div class="profile">
-            <img src="images/profile.jpg" alt="Profile Picture">
-            <h1>John Doe</h1>
-            <p>Web Developer | Tech Enthusiast | Blogger</p>
+            <img src="https://as1.ftcdn.net/jpg/05/29/57/24/1000_F_529572403_zYDfioSNX64Xgpkcxl7sSODLdjW2aONC.jpg" alt="Profile Picture">
+            <h1 class="falling-text"> ghoulx </h1>
+            <p>Web Developer | Tech Enthusiast | Backend Developer</p>
         </div>
         <div class="social-links">
             <a href="https://discord.com" target="_blank" class="btn discord">Discord</a>
@@ -46,50 +98,33 @@
             <a href="https://instagram.com" target="_blank" class="btn instagram">Instagram</a>
             <a href="https://youtube.com" target="_blank" class="btn youtube">YouTube</a>
         </div>
+        <div class="music-player">
+            <div class="music-title">Now Playing: Your Video Title</div>
+            <iframe id="backgroundMusic" src="https://www.youtube.com/watch?v=4-daScbRIyE&list=PL0Ci2NJoM_Pfg2W00imWnHyp7_0svpAEk" frameborder="0" allow="autoplay"></iframe>
+            <div class="music-controls">
+                <button onclick="playMusic()">Play</button>
+                <button onclick="pauseMusic()">Pause</button>
+                <button onclick="muteMusic()">Mute</button>
+            </div>
+        </div>
     </div>
 
     <script>
+        let music = document.getElementById("backgroundMusic");
         function enterSite() {
             document.getElementById("enterPage").classList.add("hidden");
             document.getElementById("mainContent").classList.remove("hidden");
+            music.src += "?autoplay=1";
+        }
+        function playMusic() {
+            music.src += "?autoplay=1";
+        }
+        function pauseMusic() {
+            music.src = music.src;
+        }
+        function muteMusic() {
+            music.contentWindow.postMessage('mute', '*');
         }
     </script>
 </body>
 </html>
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #0d1117;
-        color: white;
-        text-align: center;
-        padding: 50px;
-    }
-    .container {
-        background: #161b22;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-        width: 350px;
-        margin: auto;
-    }
-    .profile img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-    }
-    .social-links .btn {
-        display: block;
-        background: #21262d;
-        color: white;
-        padding: 12px;
-        margin: 10px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-    }
-    .discord { background: #5865F2; }
-    .twitter { background: #1DA1F2; }
-    .instagram { background: #E1306C; }
-    .youtube { background: #FF0000; }
-</style>
