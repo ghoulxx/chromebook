@@ -1,41 +1,31 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const enterScreen = document.getElementById('enter-screen');
-    const bioContainer = document.getElementById('bio-container');
-    const music = document.getElementById('background-music');
-    const animatedTitle = document.getElementById('animated-title');
+function startCountdown() {
+    const countdownElement = document.getElementById('countdown');
 
-    const titleText = "ghoulx"; // CHANGE THIS to your real name!
+    // Set the target date to 30 days from now
+    const now = new Date();
+    const targetDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
 
-    enterScreen.addEventListener('click', () => {
-        enterScreen.style.opacity = 0;
+    function updateCountdown() {
+        const currentTime = new Date();
+        const difference = targetDate - currentTime;
 
-        setTimeout(() => {
-            enterScreen.classList.add('hidden');
-            bioContainer.classList.remove('hidden');
+        if (difference <= 0) {
+            countdownElement.innerHTML = "It's Here!";
+            clearInterval(interval);
+            return;
+        }
 
-            music.volume = 0.5;
-            music.play();
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((difference / (1000 * 60)) % 60);
+        const seconds = Math.floor((difference / 1000) % 60);
 
-            typeTitle(titleText);
-        }, 1000); // match fade
-    });
-
-    function typeTitle(text) {
-        let i = 0;
-        animatedTitle.style.width = 'auto';
-        const interval = setInterval(() => {
-            if (i < text.length) {
-                animatedTitle.textContent += text.charAt(i);
-                i++;
-            } else {
-                clearInterval(interval);
-                animatedTitle.style.borderRight = 'none'; // End cursor
-            }
-        }, 100);
+        countdownElement.innerHTML = 
+            `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
-    /* Initialize Particles.js */
-    particlesJS.load('particles-js', 'particles.json', function() {
-        console.log('particles.js config loaded');
-    });
-});
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+}
+
+document.addEventListener('DOMContentLoaded', startCountdown);
