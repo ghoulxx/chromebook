@@ -1,103 +1,67 @@
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #ffffff;
-    color: #239b56;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+/* Reset */
+* {
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    max-width: 600px;
+/* General Body */
+body {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+/* Enter Screen */
+#enter-screen {
+    height: 100%;
     width: 100%;
-    text-align: center;
-}
-
-.profile {
-    margin: 20px 0;
-}
-
-.profile img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    transition: transform 0.3s ease;
-}
-
-.profile img:hover {
-    transform: scale(1.05);
-}
-
-.links {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-.link {
-    background-color: #1a1a1a;
-    color: #fff;
-    padding: 16px 20px;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.2s;
-}
-
-.link:hover {
-    background-color: #333;
-}
-
-.music-player {
-    background-color: #1a1a1a;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px 0;
-    width: 100%;
-}
-
-.music-controls {
-    display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 15px;
-    margin: 10px 0;
-}
-
-.music-controls button {
-    background: none;
-    border: none;
-    color: white;
+    align-items: center;
+    background: #000000;
     cursor: pointer;
-    font-size: 24px;
-    transition: transform 0.2s;
+    flex-direction: column;
 }
 
-.music-controls button:hover {
-    transform: scale(1.1);
+#enter-screen h1 {
+    font-size: 3rem;
+    animation: blink 1.5s infinite alternate;
 }
 
-.playlist {
-    margin-top: 15px;
-    text-align: left;
+/* Blinking Text Animation */
+@keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0.5; }
 }
 
-.song-item {
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    border-radius: 4px;
-    margin: 5px 0;
+/* Hidden class */
+.hidden {
+    display: none;
 }
 
-.song-item:hover {
-    background-color: #333;
+/* Bio Container */
+#bio-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
 }
 
-.song-item.active {
-    background-color: #333;
-} 
+#bio-container h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#bio-container p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    max-width: 600px;
+}
