@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* General Body */
+/* Body and Background */
 body {
     height: 100vh;
     width: 100vw;
@@ -13,6 +13,15 @@ body {
     color: #ffffff;
     font-family: 'Arial', sans-serif;
     overflow: hidden;
+    position: relative;
+}
+
+/* Particles.js Canvas */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
 /* Enter Screen */
@@ -22,9 +31,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #000000;
+    background: rgba(0, 0, 0, 0.85);
     cursor: pointer;
     flex-direction: column;
+    z-index: 2;
+    position: relative;
+    transition: opacity 1s ease;
 }
 
 #enter-screen h1 {
@@ -38,7 +50,7 @@ body {
     to { opacity: 0.5; }
 }
 
-/* Hidden class */
+/* Hidden Class */
 .hidden {
     display: none;
 }
@@ -53,14 +65,39 @@ body {
     text-align: center;
     flex-direction: column;
     backdrop-filter: blur(10px);
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    position: relative;
+    z-index: 2;
 }
 
-#bio-container h1 {
-    font-size: 3rem;
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Profile Picture */
+#profile-picture {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white;
     margin-bottom: 20px;
 }
 
-#bio-container p {
+/* Animated Title */
+#animated-title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid white;
+    width: 0;
+}
+
+p {
     font-size: 1.5rem;
     line-height: 1.6;
     max-width: 600px;
