@@ -8,6 +8,9 @@
 </head>
 <body>
 
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
     <!-- Enter Screen -->
     <div id="enter-screen">
         <h1>Click to Enter</h1>
@@ -15,7 +18,8 @@
 
     <!-- Main Content (hidden at first) -->
     <div id="bio-container" class="hidden">
-        <h1>ghoulx</h1>
+        <img id="profile-picture" src="images/profile.jpg" alt="Profile Picture">
+        <h1 id="animated-title"></h1>
         <p>🎯</p>
     </div>
 
@@ -24,6 +28,8 @@
         Your browser does not support the audio element.
     </audio>
 
+    <!-- External Particles.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
