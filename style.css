@@ -1,15 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap');
+
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     background-color: black;
     color: white;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Rubik Doodle Shadow', cursive;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
+    overflow: hidden;
 }
 
 .container {
@@ -18,11 +21,18 @@ body, html {
 }
 
 h1 {
-    font-size: 48px;
+    font-size: 60px;
     margin-bottom: 40px;
+    text-shadow: 2px 2px 8px #ff00cc;
 }
 
 #countdown {
-    font-size: 80px;
-    letter-spacing: 3px;
+    font-size: 90px;
+    letter-spacing: 4px;
+    transition: transform 0.3s ease;
+}
+
+/* Animation on change */
+#countdown.animate {
+    transform: scale(1.1);
 }
