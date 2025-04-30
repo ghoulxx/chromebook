@@ -1,16 +1,17 @@
 function startCountdown() {
     const countdownElement = document.getElementById('countdown');
 
-    // Set the target date to 30 days from now
     const now = new Date();
     const targetDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+
+    let lastOutput = '';
 
     function updateCountdown() {
         const currentTime = new Date();
         const difference = targetDate - currentTime;
 
         if (difference <= 0) {
-            countdownElement.innerHTML = "It's Here!";
+            countdownElement.textContent = "It's Here!";
             clearInterval(interval);
             return;
         }
@@ -20,8 +21,15 @@ function startCountdown() {
         const minutes = Math.floor((difference / (1000 * 60)) % 60);
         const seconds = Math.floor((difference / 1000) % 60);
 
-        countdownElement.innerHTML = 
-            `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        const output = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        if (output !== lastOutput) {
+            countdownElement.classList.add('animate');
+            setTimeout(() => countdownElement.classList.remove('animate'), 200);
+        }
+
+        countdownElement.textContent = output;
+        lastOutput = output;
     }
 
     updateCountdown();
