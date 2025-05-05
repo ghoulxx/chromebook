@@ -1,16 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Coming of Cloned</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SICKO | Streetwear</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>The Coming of Cloned</h1>
-        <div id="countdown"></div>
+<body class="bg-black text-white font-sans">
+
+  <!-- Navbar -->
+  <header class="bg-black border-b border-blue-600">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-3xl font-bold text-blue-500">SICKO</h1>
+      <nav class="space-x-6 text-white">
+        <a href="#" class="hover:text-blue-400">Shop</a>
+        <a href="#" class="hover:text-blue-400">About</a>
+        <a href="#" class="hover:text-blue-400">Contact</a>
+      </nav>
     </div>
-    <script src="script.js"></script>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 px-6 bg-black">
+    <h2 class="text-5xl font-extrabold text-white mb-6">SICKO</h2>
+    <p class="text-xl text-blue-400 mb-8">Streetwear with Bite</p>
+    <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition">
+      Shop Now
+    </a>
+  </section>
+
+  <!-- Product Grid -->
+  <section class="py-16 bg-black">
+    <div class="max-w-7xl mx-auto px-6">
+      <h3 class="text-2xl font-semibold text-white mb-8">Featured Drops</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        
+        <!-- Product 1 -->
+        <div class="bg-zinc-900 p-4 rounded-lg shadow hover:shadow-lg transition">
+          <div class="bg-gray-700 h-48 mb-4 rounded"></div>
+          <h4 class="text-white font-bold mb-1">SICKO Hoodie</h4>
+          <p class="text-blue-400 mb-2">$120</p>
+          <button onclick="addToCart('prod1', 'SICKO Hoodie', 120)" class="bg-blue-600 hover:bg-blue-700 w-full py-2 rounded text-white">
+            Add to Cart
+          </button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="bg-zinc-900 p-4 rounded-lg shadow hover:shadow-lg transition">
+          <div class="bg-gray-700 h-48 mb-4 rounded"></div>
+          <h4 class="text-white font-bold mb-1">SICKO T-Shirt</h4>
+          <p class="text-blue-400 mb-2">$60</p>
+          <button onclick="addToCart('prod2', 'SICKO T-Shirt', 60)" class="bg-blue-600 hover:bg-blue-700 w-full py-2 rounded text-white">
+            Add to Cart
+          </button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="bg-zinc-900 p-4 rounded-lg shadow hover:shadow-lg transition">
+          <div class="bg-gray-700 h-48 mb-4 rounded"></div>
+          <h4 class="text-white font-bold mb-1">SICKO Cap</h4>
+          <p class="text-blue-400 mb-2">$35</p>
+          <button onclick="addToCart('prod3', 'SICKO Cap', 35)" class="bg-blue-600 hover:bg-blue-700 w-full py-2 rounded text-white">
+            Add to Cart
+          </button>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="bg-zinc-900 p-4 rounded-lg shadow hover:shadow-lg transition">
+          <div class="bg-gray-700 h-48 mb-4 rounded"></div>
+          <h4 class="text-white font-bold mb-1">SICKO Pants</h4>
+          <p class="text-blue-400 mb-2">$90</p>
+          <button onclick="addToCart('prod4', 'SICKO Pants', 90)" class="bg-blue-600 hover:bg-blue-700 w-full py-2 rounded text-white">
+            Add to Cart
+          </button>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="bg-zinc-900 p-4 rounded-lg shadow hover:shadow-lg transition">
+          <div class="bg-gray-700 h-48 mb-4 rounded"></div>
+          <h4 class="text-white font-bold mb-1">SICKO Socks</h4>
+          <p class="text-blue-400 mb-2">$15</p>
+          <button onclick="addToCart('prod5', 'SICKO Socks', 15)" class="bg-blue-600 hover:bg-blue-700 w-full py-2 rounded text-white">
+            Add to Cart
+          </button>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="bg-zinc-900 p-4 rounded-lg shadow hover:shadow-lg transition">
+          <div class="bg-gray-700 h-48 mb-4 rounded"></div>
+          <h4 class="text-white font-bold mb-1">SICKO Jacket</h4>
+          <p class="text-blue-400 mb-2">$150</p>
+          <button onclick="addToCart('prod6', 'SICKO Jacket', 150)" class="bg-blue-600 hover:bg-blue-700 w-full py-2 rounded text-white">
+            Add to Cart
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Toggle Button -->
+  <button onclick="toggleCart()" class="fixed top-6 right-6 bg-blue-600 text-white p-3 rounded-full z-50">
+    🛒
+  </button>
+
+  <!-- Cart Sidebar -->
+  <div id="cartSidebar" class="fixed top-0 right-0 w-80 h-full bg-zinc-900 text-white p-6 shadow-lg transform translate-x-full transition-transform duration-300 z-40 overflow-y-auto">
+    <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
+    <ul id="cartItems" class="space-y-4"></ul>
+    <p class="mt-6 text-lg font-semibold">Total: $<span id="cartTotal">0</span></p>
+    <button onclick="toggleCart()" class="mt-6 bg-blue-600 hover:bg-blue-700 w-full py-2 rounded">Close Cart</button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-black border-t border-blue-600 text-center text-sm text-gray-400 py-6">
+    © 2025 SICKO. All rights reserved.
+  </footer>
+
+  <!-- Cart JavaScript -->
+  <script>
+    const cart = [];
+
+    function addToCart(id, name, price) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ id, name, price, qty: 1 });
+      }
+      renderCart();
+    }
+
+    function removeItem(id) {
+      const index = cart.findIndex(item => item.id === id);
+      if (index !== -1) {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById('cartItems');
+      const cartTotal = document.getElementById('cartTotal');
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        const li = document.createElement('li');
+        li.className = 'flex justify-between items-center';
+        li.innerHTML = `
+          <div>
+            <p class="font-bold">${item.name}</p>
+            <p class="text-sm text-gray-400">Qty: ${item.qty}</p>
+          </div>
+          <div>
+            <p>$${item.price * item.qty}</p>
+            <button onclick="removeItem('${item.id}')" class="text-red-400 text-sm mt-1">Remove</button>
+          </div>
+        `;
+        cartItems.appendChild(li);
+      });
+
+      cartTotal.textContent = total.toFixed(2);
+    }
+
+    function toggleCart() {
+      const cartSidebar = document.getElementById('cartSidebar');
+      cartSidebar.classList.toggle('translate-x-full');
+    }
+  </script>
 </body>
 </html>
